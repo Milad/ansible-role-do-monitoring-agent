@@ -14,6 +14,6 @@ galaxy_info:
     - digitalocean
     - metrics
     - monitoring
-    - do-agent
+    - doagent
 
 dependencies: []
