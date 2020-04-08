@@ -1,0 +1,22 @@
+---
+
+- name: Add the GPG key for DO repo
+  apt_key:
+    id: 9FE3B226BD775196D8C2E599DE88104AA4C6383F
+    url: https://repos.insights.digitalocean.com/sonar-agent.asc
+    state: present
+  become: yes
+
+- name: Add Digital Ocean repo
+  apt_repository:
+    repo: deb https://repos.insights.digitalocean.com/apt/do-agent main main
+    state: present
+    filename: digitalocean-agent
+  become: yes
+
+- name: Install metrics agent
+  apt:
+    name: do-agent
+    state: latest
+    update_cache: yes
+  become: yes
